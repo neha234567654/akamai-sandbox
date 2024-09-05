@@ -1,0 +1,19 @@
+controllerSecret:
+  namespace: xxx 
+  endpoint: xxx 
+  ca.crt: xxx 
+  token: xxx
+
+cluster:
+  name: xxx
+  endpoint: xxx
+
+# This parameter is optional. The default value is true. 
+kubesliceNetworking:
+  enabled: true
+
+imagePullSecrets:
+  repository: https://index.docker.io/v1/
+  username: xxx
+  password: xxx
+  email: xxx
