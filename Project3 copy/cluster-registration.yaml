@@ -1,0 +1,32 @@
+apiVersion: controller.kubeslice.io/v1alpha1
+kind: Cluster
+metadata:
+  name: mia-lke
+  namespace: kubeslice-sandbox1
+spec:
+  clusterProperty:
+    geoLocation:
+      cloudProvider: "AKAMAI"
+      cloudRegion: "us-mia"
+---
+apiVersion: controller.kubeslice.io/v1alpha1
+kind: Cluster
+metadata:
+  name: gru-lke
+  namespace: kubeslice-sandbox1
+spec:
+  clusterProperty:
+    geoLocation:
+      cloudProvider: "AKAMAI"
+      cloudRegion: "br-gru"
+---
+apiVersion: controller.kubeslice.io/v1alpha1
+kind: Cluster
+metadata:
+  name: us-east1-eks
+  namespace: kubeslice-sandbox1
+spec:
+  clusterProperty:
+    geoLocation:
+      cloudProvider: "AWS"
+      cloudRegion: "us-east-1"
