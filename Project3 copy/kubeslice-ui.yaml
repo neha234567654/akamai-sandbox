@@ -1,6 +1,0 @@
-# Provide your username, password & email values under imagePullSecrets to create a secret
-imagePullSecrets:
-  repository: https://index.docker.io/v1/
-  username: xxx
-  password: xxx
-  email: xxxs
