@@ -1,0 +1,22 @@
+controllerSecret:
+  namespace: xxx 
+  endpoint: xxx 
+  ca.crt: xxx
+  token: xxx
+
+cluster:
+  name: xxx
+  endpoint: xxx
+
+# This parameter is optional. The default value is true. 
+kubesliceNetworking:
+  enabled: true
+
+metrics:
+  insecure: true
+
+imagePullSecrets:
+  repository: xxx
+  username: xxx
+  password: xxx
+  email: xxx
