@@ -1,9 +1,0 @@
-apiVersion: controller.kubeslice.io/v1alpha1
-kind: Project
-metadata:
-  name: sandbox1
-  namespace: kubeslice-controller
-spec:
-  serviceAccount:
-    readWrite:
-      - sandbox1
