@@ -1,0 +1,19 @@
+apiVersion: networking.kubeslice.io/v1alpha1 #  APIVersion defines the versioned schema of this representation of an object.
+#Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values.
+kind: VpcServiceImport #    Kind is a string value representing the REST resource this object represents.
+# Servers may infer this from the endpoint the client submits requests to.
+metadata: # metadata of the object
+  name: redis-db # name of the VPCServiceImport object
+spec:
+  sliceName: awsslice  # Name of the slice
+  fqdn: # Fully qualified domain name of the cloud-managed service 
+    - "kubeslice-kube-access-demo-pz5g4i.serverless.use1.cache.amazonaws.com"
+  # ipAddress: # String value; array of IP addresses
+  #   - "48.217.215.233"
+  ports: # ServicePort  - Array of ports 
+    - name: tcp # Name of the port 
+      port: 6379 # Port number of the exported service
+      protocol: TCP #  The protocol being used by the exported VPC service. Supported values are HTTPS and HTTP.
+    # - name: http # Name of the port 
+    #   port: 10000 # Port number of the exported service
+    #   protocol: HTTPS #  The protocol being used by the exported VPC service. Supported values are HTTPS and HTTP. 

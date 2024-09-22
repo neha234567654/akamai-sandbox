@@ -1,0 +1,37 @@
+apiVersion: controller.kubeslice.io/v1alpha1  # The KubeSlice Controller API version. A set of resources that are exposed together, along with the version. The value must be controller.kubeslice.io/v1alpha1.
+kind: SliceConfig # The name of a particular object schema. The value must be SliceConfig.
+metadata:
+  name: awsslice # name of the slice 
+spec: # The specification of the desired state of an object.
+  overlayNetworkDeploymentMode: "single-network" # The deployment mode; no-network, multi-network, and single-network are the supported network modes. 
+  sliceType: Application # Type of slice. For onboarding applications, the slice type must be application. 
+  clusters: # An array of worker clusters 
+    - mia-lke
+    - us-east1-eks
+  namespaceIsolationProfile: # It is the configuration to onboard namespaces and/or isolate namespaces with the network policy.
+    isolationEnabled: false # It enables isolation of namespaces on a slice.  By default, it is set to false.
+    applicationNamespaces: # Array object. Defines the namespaces that will be onboarded to the slice and their corresponding worker clusters.
+      - namespace: boutique # Namespace
+        clusters: # Namespace sameness is enabled when asterisk (*) is set as the value. 
+          - mia-lke  # * for all clusters
+  # with-network
+  sliceSubnet: 10.90.0.0/16 # This subnet is used to assign IP addresses to pods that connect to the slice overlay network. The CIDR range can be re-used for each slice or can be modified as required. Example: 192.168.0.0/16  
+  sliceGatewayProvider: # It is the type of slice gateway created for inter cluster communication.
+    sliceGatewayType: OpenVPN # The slice gateway type for inter cluster communication. The value must be `OpenVPN`.
+    sliceCaType: Local # The slice gateway certificate authority type that provides certificates to secure inter-cluster traffic. The value must be always set to Local.
+  qosProfileDetails: # QoS profile for the slice inter cluster traffic.
+    queueType: HTB # It is the slice traffic control queue type. The value must be Hierarchical Token Bucket (`HTB`). HTB facilitates guaranteed bandwidth for the slice traffic.
+    priority: 0 # QoS profiles allows traffic management within a slice as well as prioritization across slices. The value range is 0-3. Integer 0 represents the lowest priority and integer 3 represents the highest priority.
+    tcType: BANDWIDTH_CONTROL # It is the traffic control type. The value must be `BANDWIDTH_CONTROL`.
+    bandwidthCeilingKbps: 30000 # The maximum bandwidth in Kbps that is allowed for the slice traffic.
+    bandwidthGuaranteedKbps: 20000 # The guaranteed bandwidth in Kbps for the slice traffic
+    dscpClass: AF11 # DSCP marking code for the slice inter-cluster traffic.  
+  sliceIpamType: Local # It is the type of the IP address management for the slice subnet. The value must be always set to `Local`.
+  # external gateway configuration
+  externalGatewayConfig: # It is the slice ingress/egress gateway configuration. 
+  - gatewayType: "envoy" # The type of ingress/egress gateways that need to be provisioned for the slice. It should be set to `envoy` for cloud services access gateway.   
+    clusters: # List of clusters to which the `externalGateway` configuration should be applied.
+      - "us-east1-eks"
+    vpcServiceAccess: # To enable the VPC service access for onboarding a cloud-managed service.
+      egress: # To use the egress gateway for cloud-based services on your slice, set the value to `true`
+        enabled: true
