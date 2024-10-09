@@ -28,14 +28,14 @@ kubectl create ns monitoring
 
 helm install prometheus kubeslice/prometheus -n monitoring
 
-
+#REGESTRING WORKER CLUSTERS TO THE KUBESLICE CONTROLLER
 export KUBECONFIG=miami-controller-kubeconfig.yaml
 
 kubectl apply -f cluster-registration.yaml -n kubeslice-sandbox1
 
 
 
-
+#INSTALLING KUBESLICE WORKER OPERATORS ON EACH WORKER CLUSTER
 kubectl get secrets kubeslice-rbac-worker-mia-lke -o yaml -n kubeslice-sandbox1
 
 kubectl get secrets kubeslice-rbac-worker-gru-lke -o yaml -n kubeslice-sandbox1
