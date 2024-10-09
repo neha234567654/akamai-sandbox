@@ -42,7 +42,7 @@ kubectl get secrets kubeslice-rbac-worker-gru-lke -o yaml -n kubeslice-sandbox1
 
 kubectl get secrets kubeslice-rbac-worker-us-east1-eks -o yaml -n kubeslice-sandbox1
 
-read "waiting for worker-operator-mia.yaml and worker-operator-mia.yaml to be updated.  hit enter key when ready"
+read "waiting for worker-operator-mia.yaml and worker-operator-gru.yaml to be updated.  hit enter key when ready"
 
 
 
