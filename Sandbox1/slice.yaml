@@ -12,12 +12,9 @@ spec:
     sliceCaType: Local
   sliceIpamType: Local
   clusters:
-    - frankft-lke
-    - stockhl-lke
-    - frankft-k3s-1
-    - frankft-k3s-2
-    - dusseldf-k3s-1
-    - dusseldf-k3s-2
+    - mia-lke
+    - gru-lke
+    -us-east1-eks
   qosProfileDetails:
     queueType: HTB
     priority: 1                    #keep integer values from 0 to 3
